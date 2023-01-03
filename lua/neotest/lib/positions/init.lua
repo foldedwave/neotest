@@ -205,7 +205,7 @@ local function build_structure(positions, namespaces, opts)
   parent.id = parent.type == "file" and parent.path or opts.position_id(parent, namespaces)
   local current_level = { parent }
   local child_namespaces = vim.list_extend({}, namespaces)
-  if parent.type == "namespace" or (opts.nested_tests and parent.type == "test") then
+  if parent.type == "namespace" or parent.type == "class" or (opts.nested_tests and parent.type == "test") then
     child_namespaces[#child_namespaces + 1] = parent
   end
   while true do
