@@ -17,9 +17,6 @@ local function get_match_type(captured_nodes)
   if captured_nodes["test.name"] then
     return "test"
   end
-  if captured_nodes["class.name"] then
-    return "class"
-  end
   if captured_nodes["namespace.name"] then
     return "namespace"
   end
@@ -75,6 +72,7 @@ local function collect(file_path, query, source, root, opts)
       end
     end
   end
+
   return nodes
 end
 
