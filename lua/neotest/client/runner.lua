@@ -36,6 +36,16 @@ function TestRunner:run_tree(tree, args, adapter_id, adapter, on_results)
     fill_results(self:_missing_results(root, results, true))
 
     if output_path then
+      for _, pos in root:iter() do
+        if not results[pos.id] and not all_results[pos.id] then
+          results[pos.id] = {
+            status = "failed",
+            errors = {},
+            output = output_path,
+          }
+        end
+      end
+
       for _, result in pairs(results) do
         if not result.output then
           result.output = output_path

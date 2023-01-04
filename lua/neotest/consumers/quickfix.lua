@@ -36,7 +36,7 @@ local init = function()
           for _, error in ipairs(result.errors or {}) do
             qf_results[#qf_results + 1] = {
               bufnr = bufnr > 0 and bufnr or nil,
-              filename = bufnr <= 0 and pos.path or nil,
+              filename = pos.path or nil,
               lnum = (error.line or pos.range[1]) + 1,
               col = pos.range[2] + 1,
               text = error.message,
